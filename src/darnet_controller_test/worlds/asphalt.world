@@ -1,0 +1,53 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <include><uri>model://sun</uri></include>
+
+    <model name='asphalt_ground'>
+      <static>true</static>
+      <pose>0 0 0 0 0 0</pose>
+      <link name='link'>
+
+        <!-- Collision (fisika) -->
+        <collision name='coll'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>200 200</size> <!-- luas "aspal" -->
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1.2</mu>
+                <mu2>1.2</mu2>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <kp>5e5</kp>
+                <kd>1e3</kd>
+              </ode>
+            </contact>
+          </surface>
+        </collision>
+
+        <!-- Visual (tampilan) -->
+        <visual name='vis'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>200 200</size>
+            </plane>
+          </geometry>
+          <!-- Abu-abu gelap biar mirip aspal -->
+          <material>
+            <ambient>0.2 0.2 0.2 1</ambient>
+            <diffuse>0.25 0.25 0.25 1</diffuse>
+            <specular>0 0 0 1</specular>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+  </world>
+</sdf>
